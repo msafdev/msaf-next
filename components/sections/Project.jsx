@@ -2,34 +2,50 @@
 
 // libraries
 import { motion } from "framer-motion";
-import { BiLogoMedium, BiRightArrowAlt } from "react-icons/bi";
-import { SiNotion } from "react-icons/si";
+import { BiRightArrowAlt } from "react-icons/bi";
 import { TbFileText } from "react-icons/tb";
+import { useState } from "react";
+
+// components
+import Work from "../work/Work";
+import Modal from "../work/Modal";
+
+// assets
+import Dribble from "../../public/images/dribbble.png";
+import Moorbsday from "../../public/images/moorbsday.jpeg";
+import Shadcn from "../../public/images/shadcn.jpg";
+import Tailwind from "../../public/images/tailwind.jpg";
 
 const projects = [
   {
     id: 1,
     title: "Moorbsday",
     description: "birthday letter",
+    image: Moorbsday,
   },
   {
     id: 2,
     title: "MSAF/ui",
     description: "free templates",
+    image: Shadcn,
   },
   {
     id: 3,
     title: "Building",
     description: "it's a secret ;)",
+    image: Dribble,
   },
   {
     id: 4,
     title: "Side Projects",
     description: "side projects collection",
+    image: Tailwind,
   },
 ];
 
 export default function Project() {
+  const [modal, setModal] = useState({ active: false, index: 0 });
+
   return (
     <motion.section
       initial={{ display: "none", opacity: 0 }}
@@ -45,21 +61,13 @@ export default function Project() {
         </div>
         {/* Projects */}
         {projects.map((project, index) => (
-          <div
+          <Work
+            index={index}
+            title={project.title}
+            description={project.description}
             key={index}
-            className="cursor-default flex gap-2 w-full border-y-[1px] md:py-2 py-1 items-end md:items-start"
-          >
-            <code className="leading-tight">({index + 1})</code>
-            <div className="flex flex-row w-full justify-between items-center gap-2 relative">
-              <h2 className="md:text-2xl lg:text-3xl text-md font-medium leading-none">
-                {project.title}
-              </h2>
-              <BiRightArrowAlt className="w-5 h-5 text-gray-800 cursor-pointer hover:scale-150 transition-all duration-300 ease-in-out" />
-              <h5 className="text-lg font-normal hidden lg:block text-gray-700">
-                {project.description}
-              </h5>
-            </div>
-          </div>
+            setModal={setModal}
+          />
         ))}
         <div className="md:p-4 p-3 w-full flex justify-end gap-3">
           <a
@@ -71,6 +79,7 @@ export default function Project() {
           </a>
         </div>
       </div>
+      <Modal modal={modal} projects={projects} />
     </motion.section>
   );
 }

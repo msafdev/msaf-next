@@ -50,13 +50,11 @@ export default function Footer() {
         <div className="font-normal w-full flex flex-col justify-between">
           <p className="text-sm">FIND ME</p>
           <div className="py-2 md:py-0 cursor-text">
-            <p className="text-xs underline underline-offset-4">
-              faris.kocak@gmail.com
-            </p>
             <p className="text-xs">+62 878 8234 0660</p>
             <p className="text-xs">
               Kebon Sirih Timur St., RT 05, RW 05, Menteng, Central Jakarta
             </p>
+            <p className="text-xs">salmanalfarisi261002@gmail.com</p>
           </div>
           <a className="cursor-pointer text-xs underline underline-offset-4">
             SEE ON MAP
@@ -78,7 +76,10 @@ export default function Footer() {
               coffee
             </p>
           </div>
-          <p onClick={() => scrollToID("home")} className="text-[12px] my-2 md:my-0 cursor-pointer text-black bg-white flex w-fit md:w-full px-3 py-2 md:py-1 text-center justify-center font-semibold">
+          <p
+            onClick={() => scrollToID("home")}
+            className="text-[12px] my-2 md:my-0 cursor-pointer text-black bg-white flex w-fit md:w-full px-3 py-2 md:py-1 text-center justify-center font-semibold"
+          >
             BACK TO TOP
           </p>
         </div>
